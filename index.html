@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="estils.css">
+</head>
+<body>
+
+    <!-- OPCIÓ A -->
+    <script>
+
+        function buscarParaules(){
+
+            var text=document.getElementById("text1").value;
+            var caracter=document.getElementById("caracter").value;
+            var missatgeErrors=document.getElementById("error");
+            var resultat=document.getElementById("resultat");
+            error.textContent = "";
+            resultat.textContent = "";
+
+            // alert(text1);         // per depurar
+            // alert(caracter);      // per depurar
+            
+            // var text_minuscula;
+            // text.toLowerCase(text_minuscula);
+
+            // alert(text_minuscula);
+
+            if(text.split(" ").length <2){  //si la llargada del text es menor a 2 paraules
+                error.textContent= "Text massa curt, ha de contenir més de 2 paraules";
+                return;
+            }
+
+            if(caracter.length !== 1){ // comprova si el caracter es un 
+                error.textContent="Sol pots escriure un caracter";
+                return;
+            }
+
+            if(!(/^[a-zA-Z]+$/).test(caracter)){ //comprova si "caracter" es una lletra, jo ho comprovo amb /^[a-zA-Z]$/ (es una expresio regular)
+                error.textContent="Sol pots escriure lletres";
+                return;
+            }else{
+                return alert(text);
+            }
+            
+        }
+    </script>
+
+    <fieldset>
+        <legend>Problema</legend>
+        <label>Text:</label> 
+        <textarea type="textarea" id="text1" placeholder="Ara mateix enfilo aquesta agulla. Amb ..."></textarea><br>
+        <label>Caràcter:</label>
+        <input type="text" id="caracter"><br>
+        <button type="button" value="INICIAR" onclick="buscarParaules()">INICIAR</button>
+        <ul id="resultat"></ul>
+        <h3 id="error"></h3>
+    </fieldset>
+</body>
+</html>
